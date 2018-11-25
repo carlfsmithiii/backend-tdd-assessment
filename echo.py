@@ -31,6 +31,10 @@ def main(args):
         print(output_string.upper())
     elif args.lower:
         print(output_string.lower())
+    elif args.title:
+        print(output_string.title())
+    else:
+        print(output_string)
 
 
 if __name__ == '__main__':

@@ -33,11 +33,11 @@ class EchoTest(unittest.TestCase):
             output UPPER case text 
         """
         process = subprocess.Popen(
-            ["python", "./echo.py", "-u", " ", "test"],
+            ["python", "./echo.py", "-u", "test"],
             stdout=subprocess.PIPE
         )
         stdout, _ = process.communicate()
-        self.assertIn("TEST", stdout)
+        self.assertEquals("TEST", stdout.strip())
 
     def test_lower_option_parser_output(self):
         """ Parsing '-l' or '--lower' should store "lower" in namespace """
@@ -50,11 +50,11 @@ class EchoTest(unittest.TestCase):
             output lower case text 
         """
         process = subprocess.Popen(
-            ["python", "./echo.py", "-l", " ", "TEST"],
+            ["python", "./echo.py", "-l", "TEST"],
             stdout=subprocess.PIPE
         )
         stdout, _ = process.communicate()
-        self.assertIn("test", stdout)
+        self.assertEquals("test", stdout.strip())
 
     def test_title_option_parser_output(self):
         """ Parsing '-t' or '--title' should store "title" in namespace """
@@ -67,11 +67,11 @@ class EchoTest(unittest.TestCase):
             output Title case Text 
         """
         process = subprocess.Popen(
-            ["python", "./echo.py", "-t", " ", "test"],
+            ["python", "./echo.py", "-t", "test"],
             stdout=subprocess.PIPE
         )
         stdout, _ = process.communicate()
-        self.assertIn("Test", stdout)
+        self.assertEquals("Test", stdout.strip())
 
 
 if __name__ == '__main__':

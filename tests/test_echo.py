@@ -39,6 +39,41 @@ class EchoTest(unittest.TestCase):
         stdout, _ = process.communicate()
         self.assertIn("TEST", stdout)
 
+    def test_lower_option_parser_output(self):
+        """ Parsing '-l' or '--lower' should store "lower" in namespace """
+        parser = echo.create_parser()
+        args = parser.parse_args(['echo.py', '-l'])
+        self.assertTrue(args.lower)
+
+    def test_lower_case_output(self):
+        """ Running the program with '-l' or '--lower' 
+            output lower case text 
+        """
+        process = subprocess.Popen(
+            ["python", "./echo.py", "-l", " ", "TEST"],
+            stdout=subprocess.PIPE
+        )
+        stdout, _ = process.communicate()
+        self.assertIn("test", stdout)
+        
+    # def test_lower_option_parser_output(self):
+    #     """ Parsing '-l' or '--lower' should store "lower" in namespace """
+    #     parser = echo.create_parser()
+    #     args = parser.parse_args(['echo.py', '-u'])
+    #     self.assertTrue(args.upper)
+
+    # def test_upper_case_output(self):
+    #     """ Running the program with '-u' or '--upper' 
+    #         output UPPER case text 
+    #     """
+    #     process = subprocess.Popen(
+    #         ["python", "./echo.py", "-u", " ", "test"],
+    #         stdout=subprocess.PIPE
+    #     )
+    #     stdout, _ = process.communicate()
+    #     self.assertIn("TEST", stdout)
+    
+
 
 if __name__ == '__main__':
     unittest.main()

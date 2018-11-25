@@ -28,14 +28,13 @@ def main(args):
     """Implementation of echo"""
     output_string = ' '.join(args.text)
     if args.upper:
-        print(output_string.upper())
-    elif args.lower:
-        print(output_string.lower())
-    elif args.title:
-        print(output_string.title())
-    else:
-        print(output_string)
+        output_string = output_string.upper()
+    if args.lower:
+        output_string = output_string.lower()
+    if args.title:
+        output_string = output_string.title()
 
+    print(output_string)
 
 if __name__ == '__main__':
     parser = create_parser()

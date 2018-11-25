@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """An enhanced version of the 'echo' cmd line utility"""
 
-__author__ = "???"
+__author__ = "Carl Smith"
 
 
 import argparse
@@ -35,6 +35,7 @@ def main(args):
         output_string = output_string.title()
 
     print(output_string)
+
 
 if __name__ == '__main__':
     parser = create_parser()

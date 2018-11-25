@@ -29,8 +29,8 @@ class EchoTest(unittest.TestCase):
         self.assertTrue(args.upper)
 
     def test_upper_case_output(self):
-        """ Running the program with '-u' or '--upper' 
-            output UPPER case text 
+        """ Running the program with '-u' or '--upper'
+            output UPPER case text
         """
         process = subprocess.Popen(
             ["python", "./echo.py", "-u", "test", "this"],
@@ -46,8 +46,8 @@ class EchoTest(unittest.TestCase):
         self.assertTrue(args.lower)
 
     def test_lower_case_output(self):
-        """ Running the program with '-l' or '--lower' 
-            output lower case text 
+        """ Running the program with '-l' or '--lower'
+            output lower case text
         """
         process = subprocess.Popen(
             ["python", "./echo.py", "-l", "TEST", "THIS"],
@@ -63,8 +63,8 @@ class EchoTest(unittest.TestCase):
         self.assertTrue(args.title)
 
     def test_title_case_output(self):
-        """ Running the program with '-t' or '--title' 
-            output Title case Text 
+        """ Running the program with '-t' or '--title'
+            output Title case Text
         """
         process = subprocess.Popen(
             ["python", "./echo.py", "-t", "test", "this"],
@@ -92,8 +92,8 @@ class EchoTest(unittest.TestCase):
         self.assertEquals("hello!", stdout.strip())
 
     def test_output_is_not_altered_when_no_arguments(self):
-        """ Tests that the input text is returned 
-            when no arguments provided 
+        """ Tests that the input text is returned
+            when no arguments provided
         """
         process = subprocess.Popen(
             ["python", "./echo.py", "a", "TesT"],
@@ -101,6 +101,7 @@ class EchoTest(unittest.TestCase):
         )
         stdout, _ = process.communicate()
         self.assertEquals('a TesT', stdout.strip())
+
 
 if __name__ == '__main__':
     unittest.main()

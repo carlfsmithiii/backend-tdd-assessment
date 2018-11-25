@@ -33,11 +33,11 @@ class EchoTest(unittest.TestCase):
             output UPPER case text 
         """
         process = subprocess.Popen(
-            ["python", "./echo.py", "-u", "test"],
+            ["python", "./echo.py", "-u", "test", "this"],
             stdout=subprocess.PIPE
         )
         stdout, _ = process.communicate()
-        self.assertEquals("TEST", stdout.strip())
+        self.assertEquals("TEST THIS", stdout.strip())
 
     def test_lower_option_parser_output(self):
         """ Parsing '-l' or '--lower' should store "lower" in namespace """
@@ -50,11 +50,11 @@ class EchoTest(unittest.TestCase):
             output lower case text 
         """
         process = subprocess.Popen(
-            ["python", "./echo.py", "-l", "TEST"],
+            ["python", "./echo.py", "-l", "TEST", "THIS"],
             stdout=subprocess.PIPE
         )
         stdout, _ = process.communicate()
-        self.assertEquals("test", stdout.strip())
+        self.assertEquals("test this", stdout.strip())
 
     def test_title_option_parser_output(self):
         """ Parsing '-t' or '--title' should store "title" in namespace """

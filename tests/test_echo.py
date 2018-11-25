@@ -55,24 +55,23 @@ class EchoTest(unittest.TestCase):
         )
         stdout, _ = process.communicate()
         self.assertIn("test", stdout)
-        
-    # def test_lower_option_parser_output(self):
-    #     """ Parsing '-l' or '--lower' should store "lower" in namespace """
-    #     parser = echo.create_parser()
-    #     args = parser.parse_args(['echo.py', '-u'])
-    #     self.assertTrue(args.upper)
 
-    # def test_upper_case_output(self):
-    #     """ Running the program with '-u' or '--upper' 
-    #         output UPPER case text 
-    #     """
-    #     process = subprocess.Popen(
-    #         ["python", "./echo.py", "-u", " ", "test"],
-    #         stdout=subprocess.PIPE
-    #     )
-    #     stdout, _ = process.communicate()
-    #     self.assertIn("TEST", stdout)
-    
+    def test_title_option_parser_output(self):
+        """ Parsing '-t' or '--title' should store "title" in namespace """
+        parser = echo.create_parser()
+        args = parser.parse_args(['echo.py', '-t'])
+        self.assertTrue(args.title)
+
+    def test_title_case_output(self):
+        """ Running the program with '-t' or '--title' 
+            output Title case Text 
+        """
+        process = subprocess.Popen(
+            ["python", "./echo.py", "-t", " ", "test"],
+            stdout=subprocess.PIPE
+        )
+        stdout, _ = process.communicate()
+        self.assertIn("Test", stdout)
 
 
 if __name__ == '__main__':

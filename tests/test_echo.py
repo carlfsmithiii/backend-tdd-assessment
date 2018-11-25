@@ -67,11 +67,11 @@ class EchoTest(unittest.TestCase):
             output Title case Text 
         """
         process = subprocess.Popen(
-            ["python", "./echo.py", "-t", "test"],
+            ["python", "./echo.py", "-t", "test", "this"],
             stdout=subprocess.PIPE
         )
         stdout, _ = process.communicate()
-        self.assertEquals("Test", stdout.strip())
+        self.assertEquals("Test This", stdout.strip())
 
 
 if __name__ == '__main__':

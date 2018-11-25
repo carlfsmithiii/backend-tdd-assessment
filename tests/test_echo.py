@@ -72,6 +72,25 @@ class EchoTest(unittest.TestCase):
         )
         stdout, _ = process.communicate()
         self.assertEquals("Test This", stdout.strip())
+    
+    def test_multiple_options(self):
+        """ Test cases where multiple flags (-t, -u, -l) are selected.
+            -l trumps -u and -t trumps both
+        """
+        process = subprocess.Popen(
+            ["python", "./echo.py", "-t", "-l", "-u", "heLLo!"],
+            stdout=subprocess.PIPE
+        )
+        stdout, _ = process.communicate()
+        self.assertEquals("Hello!", stdout.strip())
+
+        process = subprocess.Popen(
+            ["python", "./echo.py", "-l", "-u", "heLLo!"],
+            stdout=subprocess.PIPE
+        )
+        stdout, _ = process.communicate()
+        self.assertEquals("hello!", stdout.strip())
+
 
 
 if __name__ == '__main__':

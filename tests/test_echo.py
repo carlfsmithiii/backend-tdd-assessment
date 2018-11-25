@@ -28,9 +28,15 @@ class EchoTest(unittest.TestCase):
         args = parser.parse_args(['echo.py', '-u'])
         self.assertTrue(args.upper)
 
-    # def test_upper_case_output(self):
-    #     """ Running the program with '-u' or '--upper' 
-
+    def test_upper_case_output(self):
+        """ Running the program with '-u' or '--upper' 
+            output UPPER case text 
+        """
+        process = subprocess.Popen(
+            ["python", "./echo.py", "-u", "test"]
+        )
+        stdout, _ = process.communicate()
+        self.assertEquals(stdout, "TEST")
 
 if __name__ == '__main__':
     unittest.main()

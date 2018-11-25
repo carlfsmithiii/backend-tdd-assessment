@@ -22,6 +22,15 @@ class EchoTest(unittest.TestCase):
 
         self.assertEquals(stdout, usage)
 
+    def test_upper_option_parser_output(self):
+        """ Parsing '-u' or '--upper' should store "upper" in namespace """
+        parser = echo.create_parser()
+        args = parser.parse_args(['echo.py', '-u'])
+        self.assertTrue(args.upper)
+
+    # def test_upper_case_output(self):
+    #     """ Running the program with '-u' or '--upper' 
+
 
 if __name__ == '__main__':
     unittest.main()

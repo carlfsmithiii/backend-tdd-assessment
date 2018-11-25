@@ -14,7 +14,7 @@ def create_parser():
     parser = argparse.ArgumentParser(
         description="Perform transformation on input text.")
     parser.add_argument('text', help="text to be manipulated")
-    parser.add_argument('-u', '--upper', action="store_const", const="upper",
+    parser.add_argument('-u', '--upper', action="store_true",
                         help='convert text to uppercase')
     parser.add_argument('-l', '--lower', action="store_true",
                         help='convert text to lowercase')

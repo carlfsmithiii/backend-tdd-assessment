@@ -29,6 +29,8 @@ def main(args):
     output_string = ' '.join(args.text)
     if args.upper:
         print(output_string.upper())
+    elif args.lower:
+        print(output_string.lower())
 
 
 if __name__ == '__main__':

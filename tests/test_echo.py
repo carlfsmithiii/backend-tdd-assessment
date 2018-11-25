@@ -33,10 +33,12 @@ class EchoTest(unittest.TestCase):
             output UPPER case text 
         """
         process = subprocess.Popen(
-            ["python", "./echo.py", "-u", "test"]
+            ["python", "./echo.py", "-u", " ", "test"],
+            stdout=subprocess.PIPE
         )
         stdout, _ = process.communicate()
-        self.assertEquals(stdout, "TEST")
+        self.assertIn("TEST", stdout)
+
 
 if __name__ == '__main__':
     unittest.main()

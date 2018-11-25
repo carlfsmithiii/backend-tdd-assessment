@@ -12,8 +12,8 @@ import sys
 def create_parser():
     """Creates and returns an argparse cmd line option parser"""
     parser = argparse.ArgumentParser(
-        description="Perform transformation on input text.")
-    parser.add_argument('text', help="text to be manipulated")
+        description="Perform transformation on input text.", usage='%(prog)s [-h] [-u] [-l] [-t] text')
+    parser.add_argument('text', nargs="+", help="text to be manipulated")
     parser.add_argument('-u', '--upper', action="store_true",
                         help='convert text to uppercase')
     parser.add_argument('-l', '--lower', action="store_true",
@@ -27,7 +27,9 @@ def create_parser():
 
 def main(args):
     """Implementation of echo"""
-    print(args)
+    output_string = ' '.join(args.text)
+    if args.upper:
+        print(output_string.upper())
 
 
 if __name__ == '__main__':

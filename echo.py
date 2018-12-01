@@ -13,8 +13,9 @@ def create_parser():
     """Creates and returns an argparse cmd line option parser"""
     parser = argparse.ArgumentParser(
         description="Perform transformation on input text.",
+        usage="echo.py [-h] [-u] [-l] [-t] text"
     )
-    parser.add_argument('text', help="text to be manipulated")
+    parser.add_argument('text', nargs='+', help="text to be manipulated")
     parser.add_argument('-u', '--upper', action="store_true",
                         help='convert text to uppercase')
     parser.add_argument('-l', '--lower', action="store_true",
